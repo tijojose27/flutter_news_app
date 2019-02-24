@@ -14,10 +14,21 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.red,
         ),
-        home: mainButton(context));
+        home: mainButton());
   }
+}
 
-  Widget mainButton(BuildContext context) {
+class mainButton extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return _mainButton();
+  }
+}
+
+class _mainButton extends State<mainButton> {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
     return Scaffold(
       appBar: AppBar(
         title: Text("News App"),
@@ -25,12 +36,14 @@ class MyApp extends StatelessWidget {
       ),
       body: Center(
           child: RaisedButton(
-        onPressed: (){
-          checkConnectivity(context);
+        onPressed: () {
+          setState(() {
+            checkConnectivity(context);
+          });
         },
         child: Text("Get Latest News"),
-            color: Colors.redAccent,
-            splashColor: Colors.blueAccent,
+        color: Colors.redAccent,
+        splashColor: Colors.blueAccent,
       )),
     );
   }
@@ -39,14 +52,10 @@ class MyApp extends StatelessWidget {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.mobile ||
         connectivityResult == ConnectivityResult.wifi) {
-//      Navigator.push(context, MaterialPageRoute(
-//          builder: (context) => ShowNewsList()));
-        print("CONNECTION ESTABLISHED!!!!!!!!!!");
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>ShowNewsList()));
     } else {
-//      Navigator.push(context, MaterialPageRoute(
-//          builder: (context) => NoConnection()));
-      print("NO CONNECTION");
+      Navigator.push(context, MaterialPageRoute(
+          builder: (context) => NoConnection()));
     }
   }
-
 }

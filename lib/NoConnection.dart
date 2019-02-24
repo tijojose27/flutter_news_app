@@ -6,6 +6,7 @@ class NoConnection extends StatelessWidget{
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Network Check",
+      theme: ThemeData(      primarySwatch: Colors.red,),
       home: Scaffold(
         appBar: AppBar(
           centerTitle: true,
@@ -16,6 +17,16 @@ class NoConnection extends StatelessWidget{
                 Navigator.pop(context);
               }
           ),
+        ),
+        body: Center(
+          child: Text(
+            "There is not internet connection. Please check connection",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                color: Colors.redAccent,
+                fontWeight: FontWeight.bold,
+              fontSize: 25.0
+            ),),
         ),
       ),
     );
