@@ -1,11 +1,12 @@
 
 class News{
-  
-  String title;
-  String body;
-  String date;
-  String Section;
-  
-  News(this.title, this.body, this.Section, this.date);
-  
+
+    String title;
+    String body;
+    String date;
+    String Section;
+    String imageURL;
+
+    News(this.title);
+
 }
