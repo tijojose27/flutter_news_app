@@ -10,7 +10,7 @@ class CustomNewsCard extends StatelessWidget {
       home: Scaffold(
         appBar: PreferredSize(
             child: AppBar(
-              elevation: 0.0,
+              elevation: 4.0,
               backgroundColor: Colors.white,
               centerTitle: true,
               title: SizedBox(
@@ -27,20 +27,28 @@ class CustomNewsCard extends StatelessWidget {
                   color: Colors.black54,
                   padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
                   icon: Icon(Icons.arrow_back),
-                  onPressed: () {}),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  }),
             ),
             preferredSize: Size.fromHeight(80.0)),
         body: Center(
-          child: Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Stack(
-              children: <Widget>[
-                CardWidget(),
-                CardWidget()
-              ],
-            ),
+          child: ListView.builder(
+              itemCount: 10,
+              itemBuilder:(BuildContext ctcxt, int index){
+                return cardWidgetPadding();
+              },
           ),
         ),
+      ),
+    );
+  }
+
+  Widget cardWidgetPadding() {
+    return Padding(
+      padding: EdgeInsets.all(16.0),
+      child: Stack(
+        children: <Widget>[CardWidget(), CardWidget()],
       ),
     );
   }

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_news_app/NoConnection.dart';
+import 'package:flutter_news_app/View/NoConnection.dart';
 import 'package:connectivity/connectivity.dart';
-import 'package:flutter_news_app/ShowNewsList.dart';
+import 'package:flutter_news_app/View/NewsCards1.dart';
+import 'myAppBar.dart';
 
+
+void main()=>runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -29,10 +32,7 @@ class _mainButton extends State<mainButton> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      appBar: AppBar(
-        title: Text("News App"),
-        centerTitle: true,
-      ),
+      appBar: myAppBar(title: Title(color: Colors.green, child: Text("News")), hasBack: myLeadingIcon()),
       body: Center(
           child: RaisedButton(
         onPressed: () {
@@ -51,10 +51,21 @@ class _mainButton extends State<mainButton> {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.mobile ||
         connectivityResult == ConnectivityResult.wifi) {
-      Navigator.push(context, MaterialPageRoute(builder: (context)=>ShowNewsList()));
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>CustomNewsCard()));
     } else {
       Navigator.push(context, MaterialPageRoute(
           builder: (context) => NoConnection()));
     }
   }
+}
+
+class myLeadingIcon extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      icon: Icon(Icons.arrow_back),
+      onPressed: ()=> print("tap"),
+    );
+  }
+
 }
