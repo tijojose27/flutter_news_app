@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(customAppBar2());
-
 class customAppBar2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

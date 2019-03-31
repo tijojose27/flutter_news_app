@@ -32,7 +32,7 @@ class _mainButton extends State<mainButton> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      appBar: myAppBar(title: Title(color: Colors.green, child: Text("News")), hasBack: myLeadingIcon()),
+      appBar: myAppBar(title: Title(color: Colors.green, child: Text("News"))),
       body: Center(
           child: RaisedButton(
         onPressed: () {
@@ -67,5 +67,4 @@ class myLeadingIcon extends StatelessWidget{
       onPressed: ()=> print("tap"),
     );
   }
-
 }

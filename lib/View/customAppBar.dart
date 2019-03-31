@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 
-void main() => runApp(showNewsHome());
-
 
 class showNewsHome extends StatelessWidget{
   @override

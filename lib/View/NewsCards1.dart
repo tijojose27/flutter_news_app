@@ -1,37 +1,16 @@
 import 'package:flutter/material.dart';
-
-void main() => runApp(CustomNewsCard());
+import 'myAppBar.dart';
 
 class CustomNewsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Welcome to Flutter',
+      theme: ThemeData(
+        primarySwatch: Colors.red
+      ),
       home: Scaffold(
-        appBar: PreferredSize(
-            child: AppBar(
-              elevation: 4.0,
-              backgroundColor: Colors.white,
-              centerTitle: true,
-              title: SizedBox(
-                height: 0.5,
-                child: Text(
-                  'News Headlines',
-                  style: TextStyle(
-                      color: Colors.black54,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 30),
-                ),
-              ),
-              leading: IconButton(
-                  color: Colors.black54,
-                  padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
-                  icon: Icon(Icons.arrow_back),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  }),
-            ),
-            preferredSize: Size.fromHeight(80.0)),
+        appBar: myAppBar(title: Title(color: Colors.grey, child: Text("News Headlines")), hasBack: myBackButton(context),),
         body: Center(
           child: ListView.builder(
               itemCount: 10,
@@ -41,6 +20,13 @@ class CustomNewsCard extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  Widget myBackButton(BuildContext context){
+    return IconButton(
+      icon: Icon(Icons.arrow_back),
+      onPressed: ()=> Navigator.pop(context),
     );
   }
 
@@ -96,3 +82,13 @@ class CustomNewsCard extends StatelessWidget {
     );
   }
 }
+
+//class myLeadingBackButton extends StatelessWidget{
+//  @override
+//  Widget build(BuildContext context) {
+//    return IconButton(
+//      icon: Icon(Icons.arrow_back),
+//      onPressed: ()=> Navigator.pop(context),
+//    );
+//  }
+//}
