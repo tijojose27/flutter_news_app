@@ -51,7 +51,11 @@ class _mainButton extends State<mainButton> {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.mobile ||
         connectivityResult == ConnectivityResult.wifi) {
-      Navigator.push(context, MaterialPageRoute(builder: (context)=>CustomNewsCard()));
+
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>CustomNewsCard(currNews: <News>[],)));
+
+
+
     } else {
       Navigator.push(context, MaterialPageRoute(
           builder: (context) => NoConnection()));

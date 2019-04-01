@@ -1,7 +1,31 @@
 import 'package:flutter/material.dart';
 import 'myAppBar.dart';
+import 'package:flutter_news_app/Model/News.dart';
 
-class CustomNewsCard extends StatelessWidget {
+
+
+class CustomNewsCard extends StatefulWidget{
+
+  final List<News> currNews;
+
+  CustomNewsCard({Key key, @required this.currNews}) : super(key: key);
+
+  @override
+  State<StatefulWidget> createState() {
+    return _CustomNewsCard();
+  }
+
+}
+
+class _CustomNewsCard extends State<CustomNewsCard> {
+
+  List<News> myCurrNews;
+
+  @override
+  void initState() {
+    myCurrNews = widget.currNews;
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -13,7 +37,7 @@ class CustomNewsCard extends StatelessWidget {
         appBar: myAppBar(title: Title(color: Colors.grey, child: Text("News Headlines")), hasBack: myBackButton(context),),
         body: Center(
           child: ListView.builder(
-              itemCount: 10,
+              itemCount: myCurrNews.length,
               itemBuilder:(BuildContext ctcxt, int index){
                 return cardWidgetPadding();
               },
@@ -81,6 +105,7 @@ class CustomNewsCard extends StatelessWidget {
       ],
     );
   }
+
 }
 
 //class myLeadingBackButton extends StatelessWidget{
